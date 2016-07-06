@@ -1,7 +1,7 @@
 /**!
  * gulp-tinify-img 1.0.0 (c) 2016 Yi wei - MIT license
- * @desc 使用tinify进行图片压缩的gulp插件
- *       只支持jpeg & png格式
+ * @desc Tinify performed using image compression
+ * gulp widget only supports jpeg & png format
  */
 'use strict';
 var through = require('through2');
@@ -10,11 +10,11 @@ var tinify = require("tinify");
 var PluginError = gutil.PluginError;
 
 const PLUGIN_NAME = 'gulp-tinify-img';
-// 全局计数
+// Global Count
 var count = 0;
 
 /**
- * @desc 插件主体
+ * @desc Plug body
  * @param options
  *        {
  *          tinify_key: '',
@@ -22,17 +22,17 @@ var count = 0;
  *        }
  */
 module.exports = function (options) {
-    // 配置对象不能为空 || 配置对象必须包含一个可用的tinify key
+    // Configuration object can not be null || configuration object must contain an available tinify key
     if (!options || !options.tinify_key) {
         throw new PluginError(PLUGIN_NAME, 'Missing tinify key');
     }
-    // 设置key，一个有效的key是使用tinify的关键
+    // Set key, the key is the key to an effective user of tinify
     tinify.key = options.tinify_key;
 
-    // 压缩处理
+    // Compression processing
     return through.obj(function (file, enc, cb) {
         var that = this;
-        if (options.log) console.log('-------------- ', PLUGIN_NAME, '：the ', ++count ,' image start compressed -----------------');
+        if (options.log) console.log('-------------- ', PLUGIN_NAME, '：the ', ++count ,' image started compressing -----------------');
         if (file.isStream()) {
             this.emit('error', new PluginError(PLUGIN_NAME, 'Streams are not supported!'));
             return cb();
@@ -60,10 +60,10 @@ module.exports = function (options) {
                     }
                 }
                 file.contents = resultData;
-                if (options.log) console.log('-------------- ', PLUGIN_NAME, '：the ', count ,' image end compressed -----------------');
-                // 确保文件进入下一个 gulp 插件
+                if (options.log) console.log('-------------- ', PLUGIN_NAME, '：the ', count ,' image are compressed -----------------');
+                // Make sure the file is pushed into the next gulp Widget
                 that.push(file);
-                // 告诉 stream 引擎，我们已经处理完了这个文件
+                // Tell stream engine, we've finished processing the file
                 cb && cb();
             });
         }
