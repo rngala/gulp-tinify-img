@@ -1,5 +1,5 @@
 # gulp-tinify-img
-A gulp plugin dependencies tinify to compressed your jpeg or png
+A gulp plug-in dependency that tinify to compress your jpeg or png
 
 # Install
 Install with npm
@@ -27,4 +27,4 @@ Install with npm
         )};
          
 #Last
-if you have some prombles when use,you can open an issue to me!!!
+If you have any problem when using, you can open an issue with me!!!
