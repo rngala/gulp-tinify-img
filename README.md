@@ -45,4 +45,4 @@ The server will compress your image and respond with a URL where you can grab th
         )};
          
 #Last
-If you have any problem when using, you can open an issue!
+If you encounter any problem when using, you can open an issue!
